@@ -12,7 +12,7 @@ app.use(cookieParser());
 app.use('/auth', auth.routes);
 app.use(express.json());
 
-const port = process.env.API_SERVER_PORT || 3000;
+const port = process.env || 3000;
 
 (async function startServer() {
   try {
