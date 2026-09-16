@@ -47,13 +47,17 @@ async function installHandler(app) {
   console.log('CORS setting:', enableCors);
   let cors;
   if (enableCors) {
-    const origin = process.env.UI_SERVER_ORIGIN
+    const allowedOrigins = process.env.UI_SERVER_ORIGIN
       ? process.env.UI_SERVER_ORIGIN
       : ['http://localhost:8000', 'https://studio.apollographql.com'];
     const methods = 'POST';
-    cors = { origin, methods, credentials: true };
+    cors = {
+      origin: allowedOrigins,
+      methods,
+      credentials: true,
+    };
   } else {
-    cors = 'false';
+    cors = false;
   }
   server.applyMiddleware({ app, path: '/graphql', cors });
 }

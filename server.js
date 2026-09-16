@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const { connectToDb } = require('./db');
@@ -12,7 +13,7 @@ app.use(cookieParser());
 app.use('/auth', auth.routes);
 app.use(express.json());
 
-const port = process.env || 3000;
+const port = process.env.PORT || 3000;
 
 (async function startServer() {
   try {
