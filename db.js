@@ -7,7 +7,7 @@ let db;
 async function connectToDb() {
   const client = new MongoClient(url, { useNewUrlParser: true });
   await client.connect();
-  console.log('Connected to MongoDB at', url);
+  console.log('Connected to MongoDB');
   db = client.db();
 }
 
